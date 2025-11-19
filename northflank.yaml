@@ -1,0 +1,20 @@
+version: "1"
+
+services:
+  metabase:
+    type: web
+    image: 
+      type: dockerfile
+      context: .
+    ports:
+      - port: 3000
+        protocol: http
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_CONNECTION_URI: postgresql://neondb_owner:npg_ZL5SKQRtp1OY@ep-purple-glade-adzmck01-pooler.us-east-1.aws.neon.tech/metabase_prod?sslmode=require
+      MB_JETTY_HOST: 0.0.0.0
+      MB_JETTY_PORT: "3000"
+      JAVA_OPTS: "-Xmx768m -Xms256m -XX:+UseG1GC"
+    resources:
+      memory: 800Mi
+      cpu: 100m
